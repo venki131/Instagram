@@ -7,6 +7,10 @@
         <variable
             name="handlers"
             type="com.example.instagram.utils.BottomNavigationViewHelper" />
+
+        <variable
+            name="profile"
+            type="com.example.instagram.profile.ProfileActivity" />
     </data>
 
 
@@ -14,12 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--  Top Toolbar
-         <include
-             android:id="@+id/toolbar"
-             layout="@layout/layout_top_tab" />
-         &lt;!&ndash; Center body &ndash;&gt;
-         <include layout="@layout/layout_center_view_pager" />-->
+        <!--Top Toolbar-->
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/snippet_top_profilebar" />
         <!-- bottom navigation buttons -->
         <include
             layout="@layout/layout_bottom_navigation"
