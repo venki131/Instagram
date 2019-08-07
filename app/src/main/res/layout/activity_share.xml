@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="handlers"
+            type="com.example.instagram.utils.BottomNavigationViewHelper" />
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--  Top Toolbar
+         <include
+             android:id="@+id/toolbar"
+             layout="@layout/layout_top_tab" />
+         &lt;!&ndash; Center body &ndash;&gt;
+         <include layout="@layout/layout_center_view_pager" />-->
+        <!-- bottom navigation buttons -->
+        <include
+            layout="@layout/layout_bottom_navigation"
+            app:onNavigationItemSelected="@{handler::onNavigationClick}" />
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

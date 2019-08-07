@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.constraint.ConstraintLayout
+    <data>
+
+        <variable
+            name="handlers"
+            type="com.example.instagram.utils.BottomNavigationViewHelper" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".home.HomeActivity">
 
-        <!-- Top Toolbar -->
-        <!-- Center body -->
-        <!-- bottom navigation buttons -->
-    </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</android.support.design.widget.CoordinatorLayout>
+            <!-- Top Toolbar -->
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/layout_top_tab" />
+            <!-- Center body -->
+            <include layout="@layout/layout_center_view_pager" />
+            <!-- bottom navigation buttons -->
+            <include
+                layout="@layout/layout_bottom_navigation"
+                app:onNavigationItemSelected="@{handler::onNavigationClick}" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
