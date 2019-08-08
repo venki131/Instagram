@@ -2,13 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="handlers"
-            type="com.example.instagram.utils.BottomNavigationViewHelper" />
-    </data>
-
     <android.support.design.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,9 +14,13 @@
             <!-- Top Toolbar -->
             <include
                 android:id="@+id/toolbar"
-                layout="@layout/layout_top_tab" />
+                layout="@layout/layout_top_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <!-- Center body -->
-            <include layout="@layout/layout_center_view_pager" />
+            <include
+                layout="@layout/layout_center_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
             <!-- bottom navigation buttons -->
             <include
                 layout="@layout/layout_bottom_navigation"

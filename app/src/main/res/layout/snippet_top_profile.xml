@@ -1,38 +1,115 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="myHandlers"
+            type="com.example.instagram.profile.ProfileActivity.MyHandlers" />
+
+        <variable
+            name="profile"
+            type="com.example.instagram.profile.model.ProfileModel" />
+    </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/dimen_15dp"
-        android:layout_marginTop="55dp">
+        android:layout_marginTop="50dp"
+        android:padding="@dimen/dimen_15dp">
+
+        <ImageView
+            android:id="@+id/img_profile_pic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/image"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/image"
+            android:clickable="true"
+            android:onClick="@{myHandlers::onFabClicked}"
+            android:src="@drawable/ic_add_circle_outline"
+            app:fabCustomSize="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/img_profile_pic"
+            app:layout_constraintEnd_toEndOf="@id/img_profile_pic" />
+
+        <TextView
+            android:id="@+id/txt_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Venkatesh Kashyap"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/img_profile_pic"
+            app:layout_constraintTop_toBottomOf="@id/img_profile_pic" />
+
+        <TextView
+            android:id="@+id/txt_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I'm a MF star boy"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/img_profile_pic"
+            app:layout_constraintTop_toBottomOf="@id/txt_user_name" />
+
+        <TextView
+            android:id="@+id/txt_edit_profile"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_gray"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="@{myHandlers::onClickEditProfile}"
+            android:text="Edit Profile"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_about" />
 
         <TextView
             android:id="@+id/txt_number_of_posts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="0"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/txt_number_of_followers"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/img_profile_pic"
+            app:layout_constraintTop_toTopOf="@id/img_profile_pic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Posts"
             android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="@id/img_profile_pic"
+            app:layout_constraintEnd_toEndOf="@id/txt_number_of_posts"
             app:layout_constraintStart_toStartOf="@id/txt_number_of_posts"
-            app:layout_constraintTop_toBottomOf="@id/txt_number_of_posts"
-            app:layout_constraintEnd_toEndOf="@id/txt_number_of_posts"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_number_of_posts" />
 
         <TextView
             android:id="@+id/txt_number_of_followers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="1"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
@@ -40,21 +117,24 @@
             app:layout_constraintEnd_toStartOf="@+id/txt_number_of_following"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/txt_number_of_posts"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/img_profile_pic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
             android:text="Followers"
             android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="@id/img_profile_pic"
+            app:layout_constraintEnd_toEndOf="@id/txt_number_of_followers"
             app:layout_constraintStart_toStartOf="@id/txt_number_of_followers"
-            app:layout_constraintTop_toBottomOf="@id/txt_number_of_followers"
-            app:layout_constraintEnd_toEndOf="@id/txt_number_of_followers"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_number_of_followers" />
 
         <TextView
             android:id="@+id/txt_number_of_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="2"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
@@ -62,16 +142,55 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/txt_number_of_followers"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/img_profile_pic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
             android:text="Following"
             android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="@id/img_profile_pic"
+            app:layout_constraintEnd_toEndOf="@id/txt_number_of_following"
             app:layout_constraintStart_toStartOf="@id/txt_number_of_following"
-            app:layout_constraintTop_toBottomOf="@id/txt_number_of_following"
-            app:layout_constraintEnd_toEndOf="@id/txt_number_of_following"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_number_of_following" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/mid_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_gray_border_bottom"
+            app:layout_constraintTop_toBottomOf="@id/txt_edit_profile">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/img_grid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_grid_on_black" />
+
+                <ImageView
+                    android:id="@+id/img_recent_posts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_photo_black" />
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:clipToPadding="true"
+            app:layout_constraintTop_toBottomOf="@id/mid_bar" />
 
     </android.support.constraint.ConstraintLayout>
-</merge>
+</layout>

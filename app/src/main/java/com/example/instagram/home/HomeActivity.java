@@ -3,19 +3,18 @@ package com.example.instagram.home;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import com.example.instagram.R;
 import com.example.instagram.databinding.ActivityHomeBinding;
 import com.example.instagram.home.adapter.SectionsPagerAdapter;
 import com.example.instagram.home.fragments.CameraFragment;
-import com.example.instagram.home.fragments.IgTvFragment;
 import com.example.instagram.home.fragments.HomeFragment;
 import com.example.instagram.home.fragments.MessageFragment;
 import com.example.instagram.utils.BottomNavigationViewHelper;
@@ -59,11 +58,21 @@ public class HomeActivity extends AppCompatActivity implements HomeFragment.OnFr
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_instagram_logo);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_telegram);
 
+        setTabWidth(tabLayout, 0, 0.2f);
+        setTabWidth(tabLayout, 1, 0.8f);
+        setTabWidth(tabLayout, 2, 0.2f);
 
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    private void setTabWidth(TabLayout tabLayout, int pos, float weight) {
+        LinearLayout layout = ((LinearLayout) ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(pos));
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) layout.getLayoutParams();
+        layoutParams.weight = weight; // e.g. 0.5f
+        layout.setLayoutParams(layoutParams);
     }
 }
