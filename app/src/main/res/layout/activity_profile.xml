@@ -16,12 +16,20 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/top_panel">
 
         <!--Top Toolbar-->
         <include
             android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             layout="@layout/snippet_top_profilebar" />
+        <!--Center section-->
+        <include
+            layout="@layout/snippet_top_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
         <!-- bottom navigation buttons -->
         <include
             layout="@layout/layout_bottom_navigation"
